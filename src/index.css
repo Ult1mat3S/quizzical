@@ -6,6 +6,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: "Karla", sans-serif;
+  background-color: #f5f7fb;
 }
 
 .App {
@@ -40,4 +41,16 @@ body {
   width: 150px;
   border: 0;
   cursor: pointer;
+}
+
+.question-title {
+  color: #293264;
+  padding: 0;
+  margin: 0;
+}
+
+.button {
+  /* text-align: center; */
+  font-weight: bold;
+  color: #293264;
 }

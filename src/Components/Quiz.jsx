@@ -6,10 +6,9 @@ export default function Quiz({ question }) {
   return (
     <>
       <div>
-        <h2>{question.question}</h2>
-
+        <h2 className="question-title">{question.question}</h2>
         {allAnswers.map((answer) => (
-          <div key={nanoid()}>
+          <div className="button" key={nanoid()}>
             <input
               name={question.id}
               type="radio"
