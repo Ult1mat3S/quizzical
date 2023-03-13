@@ -20,13 +20,6 @@ concurrency:
   group: 'pages'
   cancel-in-progress: true
 
-
-
-
-  
-
-   
-
 jobs:
   # Single deploy job since we're just deploying
   deploy:
@@ -35,8 +28,8 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - name: Install
-      - uses: pnpm/action-setup@v2
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2.2.4
         with:
           version: 6.0.2
       - name: Checkout
@@ -44,7 +37,7 @@ jobs:
       - name: Set up Node
         uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 18
           cache: 'pnpm'
       - name: Install dependencies
         run: pnpm install
