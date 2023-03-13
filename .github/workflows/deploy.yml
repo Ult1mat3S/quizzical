@@ -29,13 +29,22 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Setup pnpm
-        uses: pnpm/action-setup@v2.2.4
+        uses: pnpm/action-setup@v2
+        with:
+          version: 7
       - name: Checkout
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          token: '${{ secrets.PERSONAL_ACCESS_TOKEN }}'
+      - name: Git config
+        run: |
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
       - name: Set up Node
         uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: 16
           cache: 'pnpm'
       - name: Install dependencies
         run: pnpm install
