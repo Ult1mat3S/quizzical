@@ -12,6 +12,7 @@ export default function App() {
     const formattedQuestions = data.results.map((question) => ({
       question: decode(question.question),
       id: nanoid(),
+      isSelected: false,
       difficulty: question.difficulty,
       type: question.type,
       correctAnswer: question.correct_answer,
@@ -23,7 +24,13 @@ export default function App() {
   }
 
   const quizElements = questions.map((question) => {
-    return <Quiz question={question} key={question.id} />;
+    return (
+      <Quiz
+        question={question}
+        key={question.id}
+        isSelected={question.isSelected}
+      />
+    );
   });
 
   return (
@@ -41,7 +48,7 @@ export default function App() {
           Start
         </button>
       </div>
-      <div>{quizElements}</div>
+      <div className="quiz-container">{quizElements}</div>
     </>
   );
 }
